@@ -22,6 +22,8 @@ import { usersReducer } from './store/users.reducer';
 import { UsersEffects } from './store/users.effects';
 import { categoriesReducer } from './store/categories.reducer';
 import { CategoriesEffects } from './store/categories.effects';
+import { itemsReducer } from './store/items.reducer';
+import { ItemsEffects } from './store/items.effects';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponents } from './page.not-found.components';
@@ -67,10 +69,12 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     StoreModule.forRoot({
       users: usersReducer,
       categories: categoriesReducer,
-    }, { metaReducers }),
+      items: itemsReducer
+    }, {metaReducers}),
     EffectsModule.forRoot([
       UsersEffects,
       CategoriesEffects,
+      ItemsEffects
     ]),
     MatFormFieldModule,
     MatInputModule,

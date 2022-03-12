@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Category } from '../models/category.model';
+import { Category, CategoryError } from '../models/category.model';
 
 export const fetchCategoriesRequest = createAction(
   '[Categories] Fetch Request'
@@ -10,5 +10,5 @@ export const fetchCategoriesSuccess = createAction(
 );
 export const fetchCategoriesFailure = createAction(
   '[Categories] Fetch Failure',
-  props<{ error: null | string }>()
+  props<{ error: null | CategoryError }>()
 );
