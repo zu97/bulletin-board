@@ -1,0 +1,94 @@
+<div class="error" *ngIf="categoriesError | async">
+  {{ categoriesError | async }}
+</div>
+
+<app-loader [isLoading]="(categoriesLoading | async)" size="lg">
+  <mat-card>
+    <mat-card-title>Create new item</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()"
+            fxLayout="column"
+            #f="ngForm"
+            autocomplete="off"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input type="text"
+                 name="title"
+                 matInput
+                 ngModel
+                 #title="ngModel"
+                 required
+          />
+          <mat-error *ngIf="title.touched && title.hasError('required')">
+            Field is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea name="description"
+                    matInput
+                    ngModel
+                    #description="ngModel"
+                    required
+          ></textarea>
+          <mat-error *ngIf="description.touched && description.hasError('required')">
+            Field is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Image</mat-label>
+          <app-file-input name="image"
+                          accept="image/png, image/gif, image/jpeg"
+                          ngModel
+                          #image="ngModel"
+                          required
+          ></app-file-input>
+          <mat-error *ngIf="image.touched && image.hasError('required')">
+            Field is required
+          </mat-error>
+          <mat-error *ngIf="image.touched && image.hasError('accept')">
+            An image with this extension cannot be uploaded
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select name="category"
+                      ngModel
+                      #category="ngModel"
+                      required
+          >
+            <mat-option *ngFor="let category of (categories | async)"
+                        [value]="category._id"
+            >{{ category.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="category.touched && category.hasError('required')">
+            Field is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input type="number"
+                 name="price"
+                 matInput
+                 ngModel
+                 #price="ngModel"
+                 required
+          />
+          <mat-error *ngIf="price.touched && price.hasError('required')">
+            Field is required
+          </mat-error>
+        </mat-form-field>
+        <button type="submit"
+                mat-raised-button
+                color="primary"
+                [disabled]="f.invalid || (createLoading | async)"
+        >
+          <app-loader [isLoading]="createLoading | async" size="sm">
+            Create item
+          </app-loader>
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</app-loader>
