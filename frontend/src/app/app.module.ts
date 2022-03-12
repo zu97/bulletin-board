@@ -7,16 +7,19 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponents } from './page.not-found.components';
 import { LayoutComponent } from './ui/layout/layout.component';
+import { LoaderComponent } from './ui/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponents,
-    LayoutComponent
+    LayoutComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
