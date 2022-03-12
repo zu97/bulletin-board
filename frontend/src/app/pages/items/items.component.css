@@ -6,21 +6,25 @@
   width: 100%;
 }
 
-.card-item {
+.items-box {
   width: 33.3333%;
   padding: 8px;
 }
 
 .item-link {
+  height: 100%;
   color: inherit;
   text-decoration: none;
   display: inline-block;
   transition: opacity .3s;
-  width: 100%;
 }
 
 .item-link:hover {
   opacity: 0.8;
+}
+
+.item-card {
+  height: calc(100% - 32px);
 }
 
 .card-item .mat-card-title {

@@ -1,9 +1,9 @@
 <div class="error" *ngIf="categoriesError | async">
-  {{ categoriesError | async }}
+  {{ (categoriesError | async)?.error }}
 </div>
 
 <div class="error" *ngIf="itemsError | async">
-  {{ itemsError | async }}
+  {{ (itemsError | async)?.error }}
 </div>
 
 <app-loader [isLoading]="(categoriesLoading | async) || (itemsLoading | async)" size="lg">
@@ -32,11 +32,11 @@
       <div fxLayout="row wrap">
         <div *ngFor="let item of (items | async)"
              fxFlex="33.3333%"
-             class="card-item">
+             class="items-box">
           <a [routerLink]="['/items', item._id]"
              class="item-link"
           >
-            <mat-card>
+            <mat-card class="item-card">
               <img mat-card-image
                    [src]="apiUrl + '/uploads/' + item.image"
                    [alt]="item.title">

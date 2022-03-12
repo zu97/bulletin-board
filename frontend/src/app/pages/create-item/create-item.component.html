@@ -1,5 +1,5 @@
 <div class="error" *ngIf="categoriesError | async">
-  {{ categoriesError | async }}
+  {{ (categoriesError | async)?.error }}
 </div>
 
 <app-loader [isLoading]="(categoriesLoading | async)" size="lg">
@@ -74,9 +74,13 @@
                  ngModel
                  #price="ngModel"
                  required
+                 min="0"
           />
           <mat-error *ngIf="price.touched && price.hasError('required')">
             Field is required
+          </mat-error>
+          <mat-error *ngIf="price.touched && price.hasError('min')">
+            Price cannot be negative
           </mat-error>
         </mat-form-field>
         <button type="submit"

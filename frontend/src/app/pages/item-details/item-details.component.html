@@ -1,3 +1,11 @@
+<div class="error" *ngIf="getError | async">
+  {{ (getError | async)?.error }}
+</div>
+
+<div class="error" *ngIf="removeError | async">
+  {{ (removeError | async)?.error }}
+</div>
+
 <app-loader [isLoading]="getLoading | async" size="lg">
   <div fxLayout="column" fxLayoutGap="16px">
     <mat-card fxLayout="row" *ngIf="item | async as $item">
@@ -11,13 +19,13 @@
       <mat-card-content>
         <mat-card-title>{{ $item.title }}</mat-card-title>
         <p><strong>Description:</strong> {{ $item.description }}</p>
-        <p><strong>Price:</strong> {{ $item.price }}</p>
+        <p><strong>Price:</strong> {{ $item.price }} som</p>
         <p><strong>Category:</strong> {{ $item.category.name }}</p>
         <p><strong>Seller name:</strong> {{ $item.user.name }}</p>
         <p><strong>Seller phone:</strong> {{ $item.user.phone }}</p>
       </mat-card-content>
     </mat-card>
-    <mat-card *ngIf="(user | async)?._id === (item | async)?.user?._id">
+    <mat-card *ngIf="(user | async) && (user | async)?._id === (item | async)?.user?._id">
       <button type="button"
               mat-raised-button
               color="warn"
