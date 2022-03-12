@@ -15,7 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { StoreModule } from '@ngrx/store';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { usersReducer } from './store/users.reducer';
 import { UsersEffects } from './store/users.effects';
@@ -27,6 +28,15 @@ import { LoaderComponent } from './ui/loader/loader.component';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+
+const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
+  return localStorageSync({
+    keys: [{users: ['user']}],
+    rehydrate: true,
+  })(reducer);
+};
+
+const metaReducers: MetaReducer[] = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -52,7 +62,7 @@ import { LoginComponent } from './pages/login/login.component';
     HttpClientModule,
     StoreModule.forRoot({
       users: usersReducer,
-    }, {}),
+    }, { metaReducers }),
     EffectsModule.forRoot([
       UsersEffects
     ]),
