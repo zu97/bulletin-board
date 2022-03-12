@@ -1,0 +1,22 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content fxLayout="column">
+    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+      <a routerLink="/" class="logo">Flex market</a>
+      <nav>
+        <a routerLink="/register" mat-button>Register</a>
+        <a routerLink="/login" mat-button>Login</a>
+      </nav>
+    </mat-toolbar>
+    <div>
+      <div fxFlex.xs="100%"
+           fxFlex.sm="579px"
+           fxFlex.md="768px"
+           fxFlex.lg="992px"
+           fxFlex="1200px"
+           class="content"
+      >
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
