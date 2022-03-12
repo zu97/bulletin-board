@@ -10,6 +10,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,6 +24,7 @@ import { PageNotFoundComponents } from './page.not-found.components';
 import { LayoutComponent } from './ui/layout/layout.component';
 import { LoaderComponent } from './ui/loader/loader.component';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
     PageNotFoundComponents,
     LayoutComponent,
     LoaderComponent,
-    CenteredCardComponent
+    CenteredCardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,10 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
     }, {}),
     EffectsModule.forRoot([
       UsersEffects
-    ])
+    ]),
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
