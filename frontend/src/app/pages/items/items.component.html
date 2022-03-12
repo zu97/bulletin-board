@@ -1,0 +1,53 @@
+<div class="error" *ngIf="categoriesError | async">
+  {{ categoriesError | async }}
+</div>
+
+<div class="error" *ngIf="itemsError | async">
+  {{ itemsError | async }}
+</div>
+
+<app-loader [isLoading]="(categoriesLoading | async) || (itemsLoading | async)" size="lg">
+  <div fxLayout="row" fxLayout.xs="column wrap" fxLayoutGap="16px">
+    <div>
+      <mat-card fxLayout="column">
+        <mat-list-item>
+          <button type="button"
+                  mat-button class="menu-btn"
+                  (click)="changeCategory()"
+          >All Items
+          </button>
+        </mat-list-item>
+        <mat-list-item *ngFor="let category of (categories | async)">
+          <button type="button"
+                  mat-button class="menu-btn"
+                  (click)="changeCategory(category)"
+          >{{ category.name }}</button>
+        </mat-list-item>
+      </mat-card>
+    </div>
+    <div fxLayout="column" class="right">
+      <mat-card>
+        <mat-card-title>{{ category?.name || 'All items' }}</mat-card-title>
+      </mat-card>
+      <div fxLayout="row wrap">
+        <div *ngFor="let item of (items | async)"
+             fxFlex="33.3333%"
+             class="card-item">
+          <a [routerLink]="['/items', item._id]"
+             class="item-link"
+          >
+            <mat-card>
+              <img mat-card-image
+                   [src]="apiUrl + '/uploads/' + item.image"
+                   [alt]="item.title">
+              <mat-card-content>
+                <mat-card-title>{{ item.title }}</mat-card-title>
+                <mat-card-subtitle>{{ item.price }} som</mat-card-subtitle>
+              </mat-card-content>
+            </mat-card>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-loader>

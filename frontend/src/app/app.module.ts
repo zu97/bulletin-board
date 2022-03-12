@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
 
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
@@ -33,6 +34,7 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FileInputComponent } from './ui/file-input/file-input.component';
+import { ItemsComponent } from './pages/items/items.component';
 
 const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -52,7 +54,8 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     CenteredCardComponent,
     RegisterComponent,
     LoginComponent,
-    FileInputComponent
+    FileInputComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,8 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

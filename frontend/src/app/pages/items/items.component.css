@@ -1,0 +1,35 @@
+.right {
+  width: 100%;
+}
+
+.menu-btn {
+  width: 100%;
+}
+
+.card-item {
+  width: 33.3333%;
+  padding: 8px;
+}
+
+.item-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity .3s;
+  width: 100%;
+}
+
+.item-link:hover {
+  opacity: 0.8;
+}
+
+.card-item .mat-card-title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.card-item .mat-card-subtitle {
+  padding-top: 10px;
+  font-size: 18px;
+  text-align: center;
+}
