@@ -37,6 +37,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FileInputComponent } from './ui/file-input/file-input.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { CreateItemComponent } from './pages/create-item/create-item.component';
+import { ItemDetailsComponent } from './pages/item-details/item-details.component';
 
 const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -58,7 +59,8 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     LoginComponent,
     FileInputComponent,
     ItemsComponent,
-    CreateItemComponent
+    CreateItemComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,

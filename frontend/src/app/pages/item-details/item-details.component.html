@@ -1,0 +1,33 @@
+<app-loader [isLoading]="getLoading | async" size="lg">
+  <div fxLayout="column" fxLayoutGap="16px">
+    <mat-card fxLayout="row" *ngIf="item | async as $item">
+      <div>
+        <img mat-card-image
+             [src]="apiUrl + '/uploads/' + $item.image"
+             [alt]="$item.title"
+             class="artist-img"
+        />
+      </div>
+      <mat-card-content>
+        <mat-card-title>{{ $item.title }}</mat-card-title>
+        <p><strong>Description:</strong> {{ $item.description }}</p>
+        <p><strong>Price:</strong> {{ $item.price }}</p>
+        <p><strong>Category:</strong> {{ $item.category.name }}</p>
+        <p><strong>Seller name:</strong> {{ $item.user.name }}</p>
+        <p><strong>Seller phone:</strong> {{ $item.user.phone }}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="(user | async)?._id === (item | async)?.user?._id">
+      <button type="button"
+              mat-raised-button
+              color="warn"
+              (click)="onRemove()"
+              [disabled]="removeLoading | async"
+      >
+        <app-loader [isLoading]="removeLoading | async">
+          Remove
+        </app-loader>
+      </button>
+    </mat-card>
+  </div>
+</app-loader>
