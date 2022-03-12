@@ -11,6 +11,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { usersReducer } from './store/users.reducer';
+import { UsersEffects } from './store/users.effects';
+
 import { AppComponent } from './app.component';
 import { PageNotFoundComponents } from './page.not-found.components';
 import { LayoutComponent } from './ui/layout/layout.component';
@@ -36,7 +41,13 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
     MatSidenavModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({
+      users: usersReducer,
+    }, {}),
+    EffectsModule.forRoot([
+      UsersEffects
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
