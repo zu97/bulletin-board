@@ -1,3 +1,8 @@
 node_modules
 public/uploads/*
 !public/uploads/.gitkeep
+!public/uploads/pc.jpg
+!public/uploads/phone.jpg
+!public/uploads/tires.jpg
+!public/uploads/toyota.jpg
+!public/uploads/work.jpg
