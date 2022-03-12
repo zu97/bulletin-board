@@ -33,7 +33,7 @@ export class HelpersService {
       if (e instanceof HttpErrorResponse && e.status === 400) {
         error = e.error;
       } else {
-        this.snackbar.open('Server Error');
+        this.snackbar.open('Server Error', 'OK', {duration: 3000});
       }
 
       return of(action({ error }));
