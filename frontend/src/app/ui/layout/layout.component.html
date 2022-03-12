@@ -2,7 +2,7 @@
   <mat-sidenav-content fxLayout="column">
     <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
       <a routerLink="/" class="logo">Flex market</a>
-      <nav>
+      <nav *ngIf="!(user | async); else profile">
         <a routerLink="/register" mat-button>Register</a>
         <a routerLink="/login" mat-button>Login</a>
       </nav>
@@ -20,3 +20,10 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-template #profile>
+  <nav>
+    <a routerLink="/items/create" mat-button>Add new item</a>
+    <button type="button" mat-button (click)="logout()">Logout</button>
+  </nav>
+</ng-template>
