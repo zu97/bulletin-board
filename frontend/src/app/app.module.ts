@@ -30,6 +30,7 @@ import { LoaderComponent } from './ui/loader/loader.component';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FileInputComponent } from './ui/file-input/file-input.component';
 
 const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -48,7 +49,8 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     LoaderComponent,
     CenteredCardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    FileInputComponent
   ],
   imports: [
     BrowserModule,
