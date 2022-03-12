@@ -20,6 +20,8 @@ import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { usersReducer } from './store/users.reducer';
 import { UsersEffects } from './store/users.effects';
+import { categoriesReducer } from './store/categories.reducer';
+import { CategoriesEffects } from './store/categories.effects';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponents } from './page.not-found.components';
@@ -62,9 +64,11 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
     HttpClientModule,
     StoreModule.forRoot({
       users: usersReducer,
+      categories: categoriesReducer,
     }, { metaReducers }),
     EffectsModule.forRoot([
-      UsersEffects
+      UsersEffects,
+      CategoriesEffects,
     ]),
     MatFormFieldModule,
     MatInputModule,
