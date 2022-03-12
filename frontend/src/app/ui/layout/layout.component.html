@@ -22,6 +22,7 @@
 </mat-sidenav-container>
 
 <ng-template #profile>
+  <span class="hello-user">Hello, <strong>{{ (user | async)?.name }}</strong>!</span>
   <nav>
     <a routerLink="/items/create" mat-button>Add new item</a>
     <button type="button" mat-button (click)="logout()">Logout</button>
